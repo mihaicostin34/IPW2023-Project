@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login
+spec:
+  selector:
+    matchLabels:
+      app: login
+  template:
+    metadata:
+      labels:
+        app: login
+    spec:
+      containers:
+      - name: login
+        image: mihaicostin/chat-project-login1.6
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 5000
+        env:
+        - name: USERS
+          value: database
+        - name: SESSIONS
+          value: sessions  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: login-svc
+spec:
+  selector:
+    app: login
+  ports:
+  - port: 5000
+    targetPort: 5000
+

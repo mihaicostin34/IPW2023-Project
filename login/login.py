@@ -61,7 +61,7 @@ def login():
             sessions.hset(uname, "token", token)
             tkn = {
                 "code" : 0,
-                "message" : token
+                "message" : str(token)
             }
             return json.dumps(tkn)
 

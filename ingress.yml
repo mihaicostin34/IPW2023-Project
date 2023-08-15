@@ -16,3 +16,10 @@ spec:
             name: login-svc
             port: 
               number: 5000
+      - pathType: Prefix
+        path: /post
+        backend: 
+          service: 
+            name: post-svc
+            port:
+              number: 5000

@@ -29,6 +29,6 @@ spec:
   selector:
     app: sessions
   ports:
-  - port: 6379
-    targetPort: 6381
+  - port: 6381
+    targetPort: 6379
 

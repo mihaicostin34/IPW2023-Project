@@ -23,3 +23,10 @@ spec:
             name: post-svc
             port:
               number: 5000
+      - pathType: Prefix
+        path: /messages
+        backend: 
+          service: 
+            name: discussions-svc
+            port:
+              number: 5000

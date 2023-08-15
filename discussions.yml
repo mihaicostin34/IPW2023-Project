@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discussions
+spec:
+  selector:
+    matchLabels:
+      app: discussions
+  template:
+    metadata:
+      labels:
+        app: discussions
+    spec:
+      containers:
+      - name: discussions
+        image: mihaicostin/chat-project-discussions1.0
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
+        env:
+        - name: USERS
+          value: database
+        - name: SESSIONS
+          value: sessions  
+        - name: MESSAGES
+          value: messages
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: discussions-svc
+spec:
+  selector:
+    app: discussions
+  ports:
+  - port: 5000
+    targetPort: 5000
+

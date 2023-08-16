@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: discussions
 spec:
+  replicas : 2
   selector:
     matchLabels:
       app: discussions
@@ -13,7 +14,7 @@ spec:
     spec:
       containers:
       - name: discussions
-        image: mihaicostin/chat-project-discussions1.0
+        image: mihaicostin/chat-project-discussions1.5
         resources:
           limits:
             memory: "128Mi"

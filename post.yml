@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: post
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: post
@@ -13,7 +14,7 @@ spec:
     spec:
       containers:
       - name: post
-        image: mihaicostin/chat-project-messages1.2
+        image: mihaicostin/chat-project-messages1.5
         resources:
           limits:
             memory: "128Mi"
